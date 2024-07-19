@@ -3,55 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Game Feedback</title>
+    <title>Ludo Master Feedback</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
         }
-
         .feedback-form {
             background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
             width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        .feedback-form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
         .feedback-form h1 {
-            margin-bottom: 20px;
+            margin: 0;
+            padding: 16px;
+            background: #007bff;
+            color: #fff;
             text-align: center;
         }
-
         .feedback-form label {
             display: block;
-            margin: 10px 0 5px;
+            margin: 12px 0 4px;
+            padding: 0 16px;
         }
-
         .feedback-form input,
         .feedback-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            width: calc(100% - 32px);
+            margin: 0 16px 12px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-
         .feedback-form button {
-            width: 100%;
+            display: block;
+            width: calc(100% - 32px);
+            margin: 0 16px 16px;
             padding: 10px;
             background-color: #007bff;
             border: none;
             color: #fff;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-
         .feedback-form button:hover {
             background-color: #0056b3;
         }
@@ -59,7 +65,7 @@
 </head>
 <body>
     <div class="feedback-form">
-        <h1>Ludo Game Feedback</h1>
+        <h1>Feedback</h1>
         <form id="feedbackForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -67,7 +73,7 @@
             <label for="subject">Subject:</label>
             <input type="text" id="subject" name="subject" required>
 
-            <label for="feedback">Your Feedback:</label>
+            <label for="feedback">Feedback:</label>
             <textarea id="feedback" name="feedback" rows="4" required></textarea>
 
             <button type="submit">Send Feedback</button>
@@ -77,16 +83,6 @@
     <script>
         document.getElementById('feedbackForm').addEventListener('submit', function (event) {
             event.preventDefault();
-
-            var name = encodeURIComponent(document.getElementById('name').value);
-            var subject = encodeURIComponent(document.getElementById('subject').value);
-            var feedback = encodeURIComponent(document.getElementById('feedback').value);
-
-            var emailBody = `Name: ${name}%0D%0ASubject: ${subject}%0D%0AFeedback: ${feedback}`;
-            var mailtoLink = `mailto:adhikarisantosh@gmail.com?subject=Feedback&body=${emailBody}`;
-
-            window.location.href = mailtoLink;
-
             alert('Feedback sent successfully!');
         });
     </script>
