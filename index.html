@@ -60,7 +60,7 @@
 <body>
     <div class="feedback-form">
         <h1>Ludo Game Feedback</h1>
-        <form id="feedbackForm" action="mailto:adhikarisantosh039@gmail.com" method="post" enctype="text/plain">
+        <form id="feedbackForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -77,6 +77,16 @@
     <script>
         document.getElementById('feedbackForm').addEventListener('submit', function (event) {
             event.preventDefault();
+
+            var name = encodeURIComponent(document.getElementById('name').value);
+            var subject = encodeURIComponent(document.getElementById('subject').value);
+            var feedback = encodeURIComponent(document.getElementById('feedback').value);
+
+            var emailBody = `Name: ${name}%0D%0ASubject: ${subject}%0D%0AFeedback: ${feedback}`;
+            var mailtoLink = `mailto:adhikarisantosh@gmail.com?subject=Feedback&body=${emailBody}`;
+
+            window.location.href = mailtoLink;
+
             alert('Feedback sent successfully!');
         });
     </script>
